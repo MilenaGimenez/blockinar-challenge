@@ -10,7 +10,8 @@ export const GlobalFilter = ({ filter, setFilter }) => {
 
   return (
     <span>
-      <select name="" id="" onChange={e => {
+      <label htmlFor="categoryFilter">Filtrar por categoria </label>
+      <select id="categoryFilter" onChange={e => {
           setValue(e.target.value);
           onChange(e.target.value);
         }}>
