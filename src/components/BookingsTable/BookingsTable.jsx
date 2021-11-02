@@ -79,9 +79,9 @@ const FilteringTable = () => {
                   <span>
                     {column.isSorted
                       ? column.isSortedDesc
-                        ? ' 🔽'
-                        : ' 🔼'
-                      : ''}
+                        ? ' 🔽 Ordenado Z/A'
+                        : ' 🔼 Ordenado A/Z'
+                      : ' Sin orden'}
                   </span>
                   <div>{column.canFilter ? column.render('Filter') : null}</div>
                 </th>
