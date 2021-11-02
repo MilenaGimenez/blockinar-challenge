@@ -65,17 +65,7 @@ const RoomsTable = () => {
         <p>Loading Please wait...</p>
       ) : (
       <div>
-        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-        <div>
-          <ReactHTMLTableToExcel
-            id="botonExportarExcel"
-            className="download-table-xls-button"
-            table="tablaRooms"
-            filename="Tabla1"
-            sheet="Página 1"
-            buttonText="Download as XLS"
-          />
-        </div>
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />        
 
         <table {...getTableProps()} id="tablaRooms">
         <thead>
@@ -96,24 +86,34 @@ const RoomsTable = () => {
               ))}
             </tr>
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
-            prepareRow(row)
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                })}
-              </tr>
-            )
-          })}
-        </tbody>        
-      </table>
-      </div>
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map(row => {
+              prepareRow(row)
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map(cell => {
+                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>        
+        </table>
 
-     )
-    
+      <div>
+          <ReactHTMLTableToExcel
+            id="botonExportarExcel"
+            className="download-table-xls-button"
+            table="tablaRooms"
+            filename="Tabla1"
+            sheet="Página 1"
+            buttonText="Exportar a Excel"
+          />
+        </div>
+
+      </div>
+     )    
     
     }
      
