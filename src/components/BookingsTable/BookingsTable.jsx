@@ -1,30 +1,33 @@
-import './BookingsTable.sass';
 import React, { useMemo } from 'react'
 import {useState, useEffect} from 'react'
 import { useTable, useFilters, useGlobalFilter, useSortBy } from 'react-table'
+//import MOCK_DATA from './MOCK_DATA.json'
 import { COLUMNS } from './columns'
 import './table.css'
 import { GlobalFilter } from './GlobalFilter'
 import { ColumnFilter } from './ColumnFilter'
 import axios from "axios"
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
-const BookingsTable = () => {
+const FilteringTable = () => {
   const [loadingData, setLoadingData] = useState(true);
-  const columns = useMemo(() => COLUMNS, [])  
+  const columns = useMemo(() => COLUMNS, [])
+  //const data = useMemo(() => MOCK_DATA, [])
   const [data, setData] = useState([]);
 
   useEffect(() => {
     async function getData() {
       await axios
-        .get("https://api-challenge.blockinar.io/rooms")
+        .get("https://api-challenge.blockinar.io/bookings")
         .then((response) => {
+          // check if the data is populated
           console.log(response.data);
           setData(response.data);
+          // you tell it that you had the result
           setLoadingData(false);
         });
     }
     if (loadingData) {
+      // if the result is not ready so you make the axios call
       getData();
     }
   }, []);
@@ -66,18 +69,8 @@ const BookingsTable = () => {
       ) : (
       <div>
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-        <div>
-          <ReactHTMLTableToExcel
-            id="botonExportarExcel"
-            className="download-table-xls-button"
-            table="tablaRooms"
-            filename="Tabla1"
-            sheet="Página 1"
-            buttonText="Download as XLS"
-          />
-        </div>
-
-        <table {...getTableProps()} id="tablaRooms">
+        <button>ordenar alfa</button>
+        <table {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -120,4 +113,4 @@ const BookingsTable = () => {
     </>
   )
 }
-export default BookingsTable
+export default FilteringTable
