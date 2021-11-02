@@ -1,4 +1,4 @@
-import './RoomsTable.sass';
+import './BookingsTable.sass';
 import React, { useMemo } from 'react'
 import {useState, useEffect} from 'react'
 import { useTable, useFilters, useGlobalFilter, useSortBy } from 'react-table'
@@ -9,7 +9,7 @@ import { ColumnFilter } from './ColumnFilter'
 import axios from "axios"
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
-const RoomsTable = () => {
+const BookingsTable = () => {
   const [loadingData, setLoadingData] = useState(true);
   const columns = useMemo(() => COLUMNS, [])  
   const [data, setData] = useState([]);
@@ -120,4 +120,4 @@ const RoomsTable = () => {
     </>
   )
 }
-export default RoomsTable
+export default BookingsTable
