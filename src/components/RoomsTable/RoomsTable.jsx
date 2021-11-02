@@ -65,17 +65,7 @@ const RoomsTable = () => {
         <p>Loading Please wait...</p>
       ) : (
       <div>
-        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-        <div>
-          <ReactHTMLTableToExcel
-            id="botonExportarExcel"
-            className="download-table-xls-button"
-            table="tablaRooms"
-            filename="Tabla1"
-            sheet="Página 1"
-            buttonText="Download as XLS"
-          />
-        </div>
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />        
 
         <table {...getTableProps()} id="tablaRooms">
         <thead>
@@ -110,9 +100,18 @@ const RoomsTable = () => {
           })}
         </tbody>        
       </table>
-      <button>Descargar Excel</button>
-      </div>
 
+      <div>
+          <ReactHTMLTableToExcel
+            id="botonExportarExcel"
+            className="download-table-xls-button"
+            table="tablaRooms"
+            filename="Tabla1"
+            sheet="Página 1"
+            buttonText="Download as XLS"
+          />
+        </div>
+      </div>
      )
     
     
