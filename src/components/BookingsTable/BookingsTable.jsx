@@ -61,7 +61,6 @@ const FilteringTable = () => {
 
   const { globalFilter } = state   
  
- 
   return (
     <>
     {loadingData ? (
@@ -69,7 +68,7 @@ const FilteringTable = () => {
       ) : (
       <div>
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-        <button>ordenar alfa</button>
+        
         <table {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
