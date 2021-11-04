@@ -11,7 +11,6 @@ const Form = () => {
     const [selectCategory, setSelectCategory] = useState('');
     const [selectNumberGuests, setSelectNumberGuest] = useState('');
 
-    const prueba = [inputFirstName, inputLastName]
     return (
         <div>
             <form action="">

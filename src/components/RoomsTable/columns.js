@@ -1,5 +1,3 @@
-import { format } from 'date-fns'
-
 export const COLUMNS = [
   {
     Header: 'Categoría',
@@ -8,7 +6,7 @@ export const COLUMNS = [
   },
   {
     Header: 'Ocupación max',
-    accessor: 'max_occupancy"',
+    accessor: 'max_occupancy',
     sticky: 'left'
   },
   {

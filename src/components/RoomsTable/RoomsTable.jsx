@@ -5,7 +5,6 @@ import { useTable, useFilters, useGlobalFilter, useSortBy } from 'react-table'
 import { COLUMNS } from './columns'
 import './table.css'
 import { GlobalFilter } from './GlobalFilter'
-import { ColumnFilter } from './ColumnFilter'
 import axios from "axios"
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
@@ -29,13 +28,6 @@ const RoomsTable = () => {
     }
   }, []);
 
-  const defaultColumn = React.useMemo(
-    () => ({
-      Filter: ColumnFilter
-    }),
-    []
-  )
-
   const {
     getTableProps,
     getTableBodyProps,
@@ -48,8 +40,7 @@ const RoomsTable = () => {
   } = useTable(
     {
       columns,
-      data,
-      defaultColumn
+      data
     },
     useFilters,
     useGlobalFilter,
@@ -81,7 +72,6 @@ const RoomsTable = () => {
                         : ' 🔼'
                       : ''}
                   </span>
-                  <div>{column.canFilter ? column.render('Filter') : null}</div>
                 </th>
               ))}
             </tr>
