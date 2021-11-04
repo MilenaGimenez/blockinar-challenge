@@ -5,7 +5,6 @@ import { useTable, useFilters, useGlobalFilter, useSortBy } from 'react-table'
 import { COLUMNS } from './columns'
 import './table.css'
 import { GlobalFilter } from './GlobalFilter'
-import { ColumnFilter } from './ColumnFilter'
 import axios from "axios"
 
 const FilteringTable = () => {
@@ -32,13 +31,6 @@ const FilteringTable = () => {
     }
   }, []);
 
-  const defaultColumn = React.useMemo(
-    () => ({
-      Filter: ColumnFilter
-    }),
-    []
-  )
-
   const {
     getTableProps,
     getTableBodyProps,
@@ -51,8 +43,7 @@ const FilteringTable = () => {
   } = useTable(
     {
       columns,
-      data,
-      defaultColumn
+      data
     },
     useFilters,
     useGlobalFilter,
@@ -83,7 +74,6 @@ const FilteringTable = () => {
                         : ' 🔼 Ordenado A/Z'
                       : ' Sin orden'}
                   </span>
-                  <div>{column.canFilter ? column.render('Filter') : null}</div>
                 </th>
               ))}
             </tr>

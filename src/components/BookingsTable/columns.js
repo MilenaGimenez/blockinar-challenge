@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 export const COLUMNS = [
   {
     Header: 'Room id',
-    accessor: 'room-id',
+    accessor: 'room_id',
     disableFilters: true,
     sticky: 'left'
   },
@@ -45,7 +45,7 @@ export const COLUMNS = [
   },
   {
     Header: 'Estado',
-    accessor: 'status',
+    accessor: 'booking_status',
     sticky: 'left'
   },
 ]
