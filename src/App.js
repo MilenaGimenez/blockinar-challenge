@@ -8,12 +8,12 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div className="tables">
+      <div className="tables" style={{display: 'flex'}}>
         <RoomsTable />
         <BookingsTable />
+      </div>
         <br></br>
         <Form />
-      </div>
     </div>
   );
 }
