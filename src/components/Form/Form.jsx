@@ -2,14 +2,15 @@ import React from 'react';
 import { Modal, Button } from 'antd';
 import 'antd/dist/antd.css';
 import { useState } from 'react';
+import './Form.sass'
 
 const Form = () => {    
     const [inputFirstName, setInputFirstName] = useState('');
     const [inputLastName, setInputLastName] = useState('');
     const [inputCheckIn, setInputCheckIn] = useState('');
     const [inputCheckOut, setInputCheckOut] = useState('');
-    const [selectCategory, setSelectCategory] = useState('');
-    const [selectNumberGuests, setSelectNumberGuest] = useState('');
+    const [selectCategory, setSelectCategory] = useState('Confort');
+    const [selectNumberGuests, setSelectNumberGuest] = useState('1');
 
     return (
         <div>

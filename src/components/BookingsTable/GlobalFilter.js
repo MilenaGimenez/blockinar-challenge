@@ -19,8 +19,11 @@ export const GlobalFilter = ({ filter, setFilter, azButton, setAzButton }) => {
           onChange(e.target.value);
         }}/>
 
-    <label htmlFor="alfabeticamente" className="globalfilter-label">Ordenar alfabéticamente: </label>
-    <Button>A/Z</Button>
+    {/* <label htmlFor="alfabeticamente" className="globalfilter-label">Ordenar alfabéticamente: </label>
+    <Button value={value || ''} onChange={e => {
+          setValue(e.target.value);
+          onChange(e.target.value);
+        }}>A/Z</Button> */}
     </span>
   )
 };
