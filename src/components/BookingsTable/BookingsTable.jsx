@@ -3,15 +3,18 @@ import {useState, useEffect} from 'react'
 import { useTable, useFilters, useGlobalFilter, useSortBy } from 'react-table'
 //import MOCK_DATA from './MOCK_DATA.json'
 import { COLUMNS } from './columns'
-import './table.css'
+//import './table.css'
 import { GlobalFilter } from './GlobalFilter'
 import axios from "axios"
+import './BookingsTable.sass'
 
 const FilteringTable = () => {
   const [loadingData, setLoadingData] = useState(true);
   const columns = useMemo(() => COLUMNS, [])
   //const data = useMemo(() => MOCK_DATA, [])
   const [data, setData] = useState([]);
+  const [azButton, setAzButton] = useState('')
+
 
   useEffect(() => {
     async function getData() {
@@ -57,8 +60,8 @@ const FilteringTable = () => {
     {loadingData ? (
         <p>Loading Please wait...</p>
       ) : (
-      <div>
-        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <div className="table-and-filter">
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} azButton={azButton} setAzButton={setAzButton}/>
         
         <table {...getTableProps()}>
         <thead>

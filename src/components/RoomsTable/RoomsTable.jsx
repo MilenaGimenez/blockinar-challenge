@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import {useState, useEffect} from 'react'
 import { useTable, useFilters, useGlobalFilter, useSortBy } from 'react-table'
 import { COLUMNS } from './columns'
-import './table.css'
+//import './table.css'
 import { GlobalFilter } from './GlobalFilter'
 import axios from "axios"
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
@@ -32,7 +32,6 @@ const RoomsTable = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    footerGroups,
     rows,
     prepareRow,
     state,
@@ -91,10 +90,10 @@ const RoomsTable = () => {
           </tbody>        
         </table>
 
-      <div>
+      <div className="download-box">
           <ReactHTMLTableToExcel
             id="botonExportarExcel"
-            className="download-table-xls-button"
+            className="download-xls-button"
             table="tablaRooms"
             filename="Tabla1"
             sheet="Página 1"

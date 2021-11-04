@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div className="tables" style={{display: 'flex'}}>
+      <div className="tables" style={{display: 'flex', justifyContent: 'space-around'}}>
         <RoomsTable />
         <BookingsTable />
       </div>

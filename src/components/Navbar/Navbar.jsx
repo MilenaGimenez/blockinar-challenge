@@ -1,10 +1,6 @@
-/* import {Layout} from 'antd';
-import './Footer.sass'; */
 import './Navbar.sass';
-
-import { Layout, Menu, Breadcrumb } from 'antd';
-
-const { Header, Content, Footer } = Layout;
+import { Layout, Menu } from 'antd';
+const { Header} = Layout;
 
 const Navbar = () => {
     return (
