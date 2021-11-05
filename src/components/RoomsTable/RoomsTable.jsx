@@ -7,6 +7,7 @@ import { COLUMNS } from './columns'
 import { GlobalFilter } from './GlobalFilter'
 import axios from "axios"
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import Form from '../Form';
 
 const RoomsTable = () => {
   const [loadingData, setLoadingData] = useState(true);
@@ -99,7 +100,8 @@ const RoomsTable = () => {
             sheet="Página 1"
             buttonText="Exportar a Excel"
           />
-        </div>
+        <Form />
+      </div>
 
       </div>
      )    
