@@ -57,7 +57,7 @@ const RoomsTable = () => {
       ) : (
       <div className="table-and-filter">
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />        
-
+        <span className="text">Para ordenar alfabéticamente, presione en el título de cada columna.</span>
         <table {...getTableProps()} id="tablaRooms">
         <thead>
           {headerGroups.map(headerGroup => (
