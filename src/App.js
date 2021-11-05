@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './components/Navbar';
+import RoomsTable from './components/RoomsTable';
+import BookingsTable from './components/BookingsTable';
+import './App.sass';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hola Blockinar Challenge! <code>Soy Milena Gimenez</code>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="principal-box">
+      <Navbar />
+      <div className="table-components">        
+        <RoomsTable />
+        <BookingsTable />
+      </div>       
     </div>
   );
 }
