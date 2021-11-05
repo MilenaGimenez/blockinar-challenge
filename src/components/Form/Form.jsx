@@ -45,32 +45,35 @@ const Formulario = () => {
               Cancelar
             </Button>
           ]}>
-            <Form>
-              <Form.Item name={['name']} label="Nombre" rules={[{ required: true, message: 'Ingresar nombre' }]}>
-                <Input />
-              </Form.Item>
-              <Form.Item name={['apellido']} label="Apellido" rules={[{ required: true, message: 'Ingresar apellido' }]}>
-                <Input />
-              </Form.Item>
-              <Form.Item name="date-picker" label="Fecha de Check In:" rules={[{ required: true, message: 'Ingresar fecha de Check In' }]}>
-                <DatePicker />
-              </Form.Item>
-              <Form.Item name="date-picker" label="Fecha de Check Out:" rules={[{ required: true, message: 'Ingresar fecha de Check Out' }]} >
-                <DatePicker />
-              </Form.Item>
-              <Form.Item
-                name="category"
-                label="Categoría"
-                rules={[{ required: true, message: 'Seleccionar categoría' }]}
-              >
-                <Select placeholder="Seleccionar categoría">
-                  <Option value='Confort'>Confort</Option>
-                  <Option value='Superior'>Superior</Option>
-                  <Option value='Junior Suite'>Junior Suite</Option>
-                  <Option value='Senior Suite'>Senior Suite</Option>
-                </Select>
-              </Form.Item>            
-            </Form>                          
+            <form>
+                <label htmlFor="first_name">Nombre:</label>
+                <input type="text" id="first_name" placeholder="Nombre" value={inputFirstName} onInput={e => setInputFirstName(e.target.value)} required/>   
+
+                <label htmlFor="last_name">Apellido:</label>
+                <input type="text" id="last_name" placeholder="Apellido" value={inputLastName} onInput={e => setInputLastName(e.target.value)} required/>
+
+                <label htmlFor="check_in_date">Fecha Check In:</label>
+                <input type="date" id="check_in_date" value={inputCheckIn} onInput={e => setInputCheckIn(e.target.value)} required/>
+
+                <label htmlFor="check_out_date">Fecha Check Out:</label>
+                <input type="date" id="check_out_date" value={inputCheckOut} onInput={e => setInputCheckOut(e.target.value)} required/>
+
+                <label htmlFor="category">Categoria:</label>
+                <select name="category" id="category" value={selectCategory} onInput={e => setSelectCategory(e.target.value)}>
+                <option value='Confort'>Confort</option>
+                <option value='Superior'>Superior</option>
+                <option value='Junior Suite'>Junior Suite</option>
+                <option value='Senior Suite'>Senior Suite</option>
+                </select>
+
+                <label htmlFor="number_of_guests">Número de invitados:</label>
+                <select name="number_of_guests" id="number_of_guests" value={selectNumberGuests} onInput={e => setSelectNumberGuest(e.target.value)}>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                </select>                               
+            </form>                          
           </Modal>
         </div>
     );
