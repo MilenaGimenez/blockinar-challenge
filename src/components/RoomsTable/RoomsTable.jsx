@@ -54,7 +54,7 @@ const RoomsTable = () => {
     {loadingData ? (
         <p>Loading Please wait...</p>
       ) : (
-      <div>
+      <div className="table-and-filter">
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />        
 
         <table {...getTableProps()} id="tablaRooms">

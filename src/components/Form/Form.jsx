@@ -3,8 +3,10 @@ import { Modal, Button } from 'antd';
 import 'antd/dist/antd.css';
 import { useState } from 'react';
 import './Form.sass'
+import { Form, Input, InputNumber, DatePicker, Select } from 'antd';
+const { Option } = Select;
 
-const Form = () => {    
+const Formulario = () => {    
     const [inputFirstName, setInputFirstName] = useState('');
     const [inputLastName, setInputLastName] = useState('');
     const [inputCheckIn, setInputCheckIn] = useState('');
@@ -12,49 +14,85 @@ const Form = () => {
     const [selectCategory, setSelectCategory] = useState('Confort');
     const [selectNumberGuests, setSelectNumberGuest] = useState('1');
 
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const showModal = () => {
+      setIsModalVisible(true);
+    };
+    const handleOk = () => {
+      setIsModalVisible(false);
+    };
+  
+    const handleCancel = () => {
+      setIsModalVisible(false);
+    };
+
     return (
         <div>
-            <form action="">
-                <label htmlFor="first_name">Nombre</label>
-                <input type="text" id="first_name" placeholder="Nombre" value={inputFirstName} onInput={e => setInputFirstName(e.target.value)} required/>   
+            <Button type="primary" onClick={showModal}>
+               Cargar nueva reserva
+            </Button>
+            <Modal title="Cargar nueva reserva" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
+        footer={[
+            <Button key="back" onClick={handleCancel}>
+              Cancelar
+            </Button>,
+            <Button key="submit" type="primary" onClick={handleOk}>
+              Confirmar reserva
+            </Button>,
+          ]}>
+            <Form>
+              <Form.Item name={['name']} label="Nombre" rules={[{ required: true, message: 'Ingresar nombre' }]}>
+                <Input />
+              </Form.Item>
+              <Form.Item name={['apellido']} label="Apellido" rules={[{ required: true, message: 'Ingresar apellido' }]}>
+                <Input />
+              </Form.Item>
+              <Form.Item name="date-picker" label="Fecha de Check In:" rules={[{ required: true, message: 'Ingresar fecha de Check In' }]}>
+                <DatePicker />
+              </Form.Item>
+              <Form.Item name="date-picker" label="Fecha de Check Out:" rules={[{ required: true, message: 'Ingresar fecha de Check Out' }]} >
+                <DatePicker />
+              </Form.Item>
+              <Form.Item
+                name="category"
+                label="Categoría"
+                rules={[{ required: true, message: 'Seleccionar categoría' }]}
+              >
+                <Select placeholder="Seleccionar categoría">
+                  <Option value='Confort'>Confort</Option>
+                  <Option value='Superior'>Superior</Option>
+                  <Option value='Junior Suite'>Junior Suite</Option>
+                  <Option value='Senior Suite'>Senior Suite</Option>
+                </Select>
+              </Form.Item>
 
-                <label htmlFor="last_name">Apellido</label>
-                <input type="text" id="last_name" placeholder="Apellido" value={inputLastName} onInput={e => setInputLastName(e.target.value)} required/>
-
-                <label htmlFor="check_in_date">Fecha Check In</label>
-                <input type="date" id="check_in_date" value={inputCheckIn} onInput={e => setInputCheckIn(e.target.value)} required/>
-
-                <label htmlFor="check_out_date">Fecha Check Out</label>
-                <input type="date" id="check_out_date" value={inputCheckOut} onInput={e => setInputCheckOut(e.target.value)} required/>
-
-                <label htmlFor="category">Categoria</label>
-                <select name="category" id="category" value={selectCategory} onInput={e => setSelectCategory(e.target.value)}>
-                <option value='Confort'>Confort</option>
-                <option value='Superior'>Superior</option>
-                <option value='Junior Suite'>Junior Suite</option>
-                <option value='Senior Suite'>Senior Suite</option>
-                </select>
-
-                <label htmlFor="number_of_guests">Número de invitados</label>
-                <select name="number_of_guests" id="number_of_guests" value={selectNumberGuests} onInput={e => setSelectNumberGuest(e.target.value)}>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                </select>
-
-                <ModalPrueba 
+              <Form.Item >
+              <ModalPrueba 
                     inputFirstName={inputFirstName} 
                     inputLastName={inputLastName}
                     inputCheckIn={inputCheckIn}
                     inputCheckOut={inputCheckOut}
                     selectCategory={selectCategory}
                     selectNumberGuests={selectNumberGuests}
-                    />               
-            </form>
+                    />  
+              </Form.Item>
+            </Form>
+                {/* <ModalPrueba 
+                    inputFirstName={inputFirstName} 
+                    inputLastName={inputLastName}
+                    inputCheckIn={inputCheckIn}
+                    inputCheckOut={inputCheckOut}
+                    selectCategory={selectCategory}
+                    selectNumberGuests={selectNumberGuests}
+                    />   */}             
+            </Modal>
+
         </div>
     );
 };
+/* const ModalFormulario = () => {
+
+} */
 
 const ModalPrueba = (props) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -70,8 +108,6 @@ const ModalPrueba = (props) => {
 
     const showModal = () => {
       setIsModalVisible(true);
-    //   console.log(inputFirstName.inputFirstName)
-    //   console.log(inputLastName.inputLastName)
     };
   
     const handleOk = () => {
@@ -103,9 +139,42 @@ const ModalPrueba = (props) => {
             <p>Fecha de Check Out: {inputCheckOut}</p>
             <p>Categoría: {selectCategory}</p>
             <p>Número de invitados: {selectNumberGuests}</p>
+
+      {/* <Form>
+      <Form.Item name={['name']} label="Nombre" rules={[{ required: true, message: 'Ingresar nombre' }]}>
+        <Input />
+      </Form.Item>
+      <Form.Item name={['apellido']} label="Apellido" rules={[{ required: true, message: 'Ingresar apellido' }]}>
+        <Input />
+      </Form.Item>
+      <Form.Item name="date-picker" label="Fecha de Check In:" rules={[{ required: true, message: 'Ingresar fecha de Check In' }]}>
+        <DatePicker />
+      </Form.Item>
+      <Form.Item name="date-picker" label="Fecha de Check Out:" rules={[{ required: true, message: 'Ingresar fecha de Check Out' }]} >
+        <DatePicker />
+      </Form.Item>
+      <Form.Item
+        name="category"
+        label="Categoría"
+        rules={[{ required: true, message: 'Seleccionar categoría' }]}
+      >
+        <Select placeholder="Seleccionar categoría">
+          <Option value='Confort'>Confort</Option>
+          <Option value='Superior'>Superior</Option>
+          <Option value='Junior Suite'>Junior Suite</Option>
+          <Option value='Senior Suite'>Senior Suite</Option>
+        </Select>
+      </Form.Item>
+
+      <Form.Item >
+        <Button type="primary" htmlType="submit">
+          Enviar
+        </Button>
+      </Form.Item>
+    </Form> */}
         </Modal>
       </>
     );
   };
 
-export default Form;
+export default Formulario;

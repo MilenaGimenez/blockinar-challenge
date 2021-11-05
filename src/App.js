@@ -3,12 +3,13 @@ import Navbar from './components/Navbar';
 import RoomsTable from './components/RoomsTable';
 import BookingsTable from './components/BookingsTable';
 import Form from './components/Form';
+import './App.sass';
 
 function App() {
   return (
     <div>
       <Navbar />
-      <div className="tables" style={{display: 'flex', justifyContent: 'space-around'}}>
+      <div className="table-components">
         <RoomsTable />
         <BookingsTable />
       </div>
